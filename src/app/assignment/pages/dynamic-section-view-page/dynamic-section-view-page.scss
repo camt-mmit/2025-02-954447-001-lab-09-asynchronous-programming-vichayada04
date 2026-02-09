@@ -1,0 +1,63 @@
+@use '../../../../scss/common';
+@use '../../../../scss/message';
+
+:host {
+  @include common.layout-block();
+}
+
+._title {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+._view-section {
+  border: 1px solid var(--app-surface-container-color);
+  border-radius: 8px;
+  padding: 24px;
+  margin-bottom: 24px;
+  max-width: 500px; // จำกัดความกว้างเพื่อให้ดูสวยเหมือนตัวอย่าง
+  margin-left: auto;
+  margin-right: auto;
+
+  h3 {
+    margin: 0 0 16px 0;
+    color: var(--app-primary-color);
+    font-weight: bold;
+  }
+}
+
+._numbers-list {
+  margin-left: 32px; // ขยับรายการตัวเลขเข้าไปด้านใน
+}
+
+._number-row,
+._result-row {
+  display: flex;
+  justify-content: space-between; // ดันป้ายชื่อไปซ้าย ดันตัวเลขไปขวา
+  margin-bottom: 8px;
+  font-family: var(--app-monospace-font);
+
+  ._label {
+    color: var(--app-outline-color);
+  }
+
+  ._value {
+    font-weight: 500;
+  }
+}
+
+._result-row {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--app-outline-variant-color); // เพิ่มเส้นประคั่นผลรวม
+  font-weight: bold;
+
+  ._value {
+    text-decoration: underline; // ขีดเส้นใต้ผลรวมตามตัวอย่าง
+    text-underline-offset: 4px;
+  }
+}
+
+._message {
+  @include message.layout-message();
+}

@@ -1,1 +1,35 @@
-<p>dynamic-section-view-page works!</p>
+<div class="view-container">
+  @if (dataResource.hasValue()) {
+    @if (dataResource.value(); as sections) {
+      @if (sections.length > 0) {
+        <h2 class="page-title">Assignment Results</h2>
+        <div class="sections-grid">
+          @for (section of sections; track section; let sIdx = $index) {
+            <div class="_view-section">
+              <h3>Section {{ sIdx + 1 }}</h3>
+              <div class="_numbers-list">
+                @for (num of section; track num; let nIdx = $index) {
+                  <div class="_number-row">
+                    <span class="_label">number {{ nIdx + 1 }}</span>
+                    <span class="_value">{{ num | number }}</span>
+                  </div>
+                }
+              </div>
+              <div class="_result-row">
+                <span class="_label">Result</span>
+                <span class="_value">{{ section.reduce(sumReducer, 0) | number }}</span>
+              </div>
+            </div>
+          }
+        </div>
+      } @else {
+        <div class="_message">
+          <i class="material-symbols-outlined">warning</i>
+          <span>Not Found!!!</span>
+        </div>
+      }
+    }
+  } @else if (dataResource.isLoading()) {
+    <div class="_message">Loading...</div>
+  }
+</div>

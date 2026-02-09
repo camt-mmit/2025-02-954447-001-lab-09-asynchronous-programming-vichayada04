@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DynamicSectionFormPage } from './dynamic-section-form-page';
+import { DynamicSectionView } from './dynamic-section-view';
 
-describe('DynamicSectionFormPage', () => {
-  let component: DynamicSectionFormPage;
-  let fixture: ComponentFixture<DynamicSectionFormPage>;
+describe('DynamicSectionView', () => {
+  let component: DynamicSectionView;
+  let fixture: ComponentFixture<DynamicSectionView>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DynamicSectionFormPage]
+      imports: [DynamicSectionView]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(DynamicSectionFormPage);
+    fixture = TestBed.createComponent(DynamicSectionView);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

@@ -1,0 +1,47 @@
+@use '../../../../scss/common';
+
+._main-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+._section-box {
+  border: 1px solid var(--app-on-surface-color);
+  padding: 16px;
+  border-radius: 8px;
+
+  legend {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 10px;
+    font-weight: bold;
+  }
+}
+
+._number-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+
+  label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+  }
+
+  input {
+    flex: 1;
+  }
+}
+
+._result-row {
+  margin-top: 12px;
+  padding-top: 8px;
+  border-top: 1px dashed var(--app-surface-container-color);
+  text-align: right;
+}

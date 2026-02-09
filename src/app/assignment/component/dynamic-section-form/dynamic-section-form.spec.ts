@@ -8,9 +8,8 @@ describe('DynamicSectionForm', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DynamicSectionForm]
-    })
-    .compileComponents();
+      imports: [DynamicSectionForm],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(DynamicSectionForm);
     component = fixture.componentInstance;

@@ -1,36 +1,5 @@
-.assignment-layout {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-  padding: 20px;
+@use '../../scss/common';
 
-  .tab-menu {
-    display: flex;
-    gap: 10px;
-
-    .btn {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      padding: 8px 16px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      background: white;
-      cursor: pointer;
-      transition: all 0.2s;
-
-      &.active {
-        // สีของปุ่มเมื่อหน้านั้นถูกเปิดอยู่
-        background-color: #3f51b5;
-        color: white;
-        border-color: #3f51b5;
-      }
-    }
-  }
-
-  .page-content {
-    width: 100%;
-    max-width: 800px;
-  }
+:host {
+  @include common.layout-block();
 }

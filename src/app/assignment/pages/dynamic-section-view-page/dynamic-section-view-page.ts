@@ -1,13 +1,26 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { DynamicSectionViewComponent } from '../../components/dynamic-section-view/dynamic-section-view';
+import { DecimalPipe } from '@angular/common';
+import { ChangeDetectionStrategy, Component, inject, resource } from '@angular/core';
+import { DynamicSectionDataStorage } from '../../services/dynamic-section-data.storage';
 
 @Component({
+  selector: 'app-dynamic-section-view-page',
   standalone: true,
-  imports: [DynamicSectionViewComponent],
-  template: ` <app-dynamic-section-view /> `,
+  imports: [DecimalPipe],
+  templateUrl: './dynamic-section-view-page.html',
+  styleUrl: './dynamic-section-view-page.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DynamicSectionViewPageComponent {
-  // คุณสามารถลบโค้ดเรื่อง resource หรือ storage ในหน้านี้ออกได้เลย
-  // เพราะหน้า Page นี้ทำหน้าที่เป็นแค่ Container เฉยๆ ในตอนนี้
+// path: src/app/assignment/pages/dynamic-section-view-page/dynamic-section-view-page.ts
+export class DynamicSectionViewPage {
+  private storage = inject(DynamicSectionDataStorage);
+
+  protected dataResource = resource({
+    loader: async () => {
+      const data = await this.storage.get();
+      // คืนค่าเป็นอาเรย์ว่างเพื่อให้หน้า HTML เช็ค .length ได้
+      return data ?? [];
+    },
+  });
+
+  protected readonly sumReducer = (acc: number, curr: number) => acc + (curr || 0);
 }
