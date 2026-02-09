@@ -1,0 +1,30 @@
+<div class="container">
+  <button type="button" (click)="addSection()" class="btn-add-section">+ Section</button>
+
+  <div class="sections-list">
+    @for (section of sections(); track $index; let sIdx = $index) {
+      <div class="section-card">
+        <div class="section-header">
+          <button type="button" (click)="addNumber(sIdx)" class="btn-add-number">+ Number</button>
+          <span>Section {{ sIdx + 1 }}</span>
+          <button type="button" (click)="removeSection(sIdx)" class="btn-delete-red">🗑</button>
+        </div>
+
+        <div class="numbers-list">
+          @for (num of section; track $index; let nIdx = $index) {
+            <div class="number-row">
+              <label>Number {{ nIdx + 1 }}</label>
+              <input type="number" [(ngModel)]="sections()[sIdx][nIdx]" class="input-field" />
+              <button (click)="removeNumber(sIdx, nIdx)" class="btn-remove-item">×</button>
+            </div>
+          }
+        </div>
+
+        <div class="result-row">
+          <label>Result</label>
+          <span class="sum-display">{{ getSum(section) | number }}</span>
+        </div>
+      </div>
+    }
+  </div>
+</div>

@@ -1,0 +1,35 @@
+<div class="view-container">
+  @if (storage.data().length === 0) {
+    <div class="not-found-wrapper">
+      <div class="not-found-card">
+        <h3>⚠️ Not Found!!!</h3>
+      </div>
+    </div>
+  } @else {
+    <h2 class="page-title">Assignment Results</h2>
+
+    <div class="sections-grid">
+      @for (section of storage.data(); track $index; let sIdx = $index) {
+        <div class="section-table-card">
+          <div class="table-header">
+            <h4>Section {{ sIdx + 1 }}</h4>
+          </div>
+
+          <div class="table-body">
+            @for (num of section; track $index; let nIdx = $index) {
+              <div class="table-row">
+                <span class="label">Number {{ nIdx + 1 }}</span>
+                <span class="value">{{ num | number }}</span>
+              </div>
+            }
+          </div>
+
+          <div class="table-footer">
+            <span class="label">Total Result</span>
+            <span class="total-value">{{ getSum(section) | number }}</span>
+          </div>
+        </div>
+      }
+    </div>
+  }
+</div>
